@@ -55,7 +55,13 @@ endef
 define KernelPackage/mt7615/install
 	$(INSTALL_DIR) $(1)/lib/wifi
 	$(INSTALL_DIR) $(1)/lib/firmware
-	$(INSTALL_DIR) $(1)/etc_ro/Wireless/
+	$(INSTALL_DIR) $(1)/etc/wireless/mt7615/
+	$(INSTALL_DIR) $(1)/etc_ro/Wireless/RT2860AP/
+	$(INSTALL_DIR) $(1)/etc/RT2860/
+	$(INSTALL_BIN) ./files/mt7615.1.2G.dat $(1)/etc/wireless/mt7615/
+	$(INSTALL_BIN) ./files/mt7615.1.5G.dat $(1)/etc/wireless/mt7615/
+	$(INSTALL_BIN) ./files/7615_SingleSKU.dat $(1)/etc_ro/Wireless/RT2860AP/
+	$(INSTALL_BIN) ./files/7615_SingleSKU_BF.dat $(1)/etc_ro/Wireless/RT2860AP/
 endef
 
 $(eval $(call KernelPackage,mt7615))
